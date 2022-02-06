@@ -1,5 +1,6 @@
 package com.example.ProjectUserManagement.api;
 
+import com.example.ProjectUserManagement.exception.UserExistException;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -52,5 +53,12 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public boolean equals(Object o ){
+        if (o instanceof UserEntity){
+            UserEntity user = (UserEntity) o;
+            return this.email.equals(user.email);
+        }
+        return false;
     }
 }
